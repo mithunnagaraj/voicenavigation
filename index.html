@@ -21,10 +21,10 @@
           	<a href ng-click="setTab(1)">Home</a>
        	</li>
        	<li ng-class="{ active: isSet(2) }">
-          	<a href ng-click="setTab(2)">Profile</a>
+          	<a href ng-click="setTab(2)">Health history</a>
        	</li>
        	<li ng-class="{ active: isSet(3) }">
-          	<a href ng-click="setTab(3)">Messages</a>
+          	<a href ng-click="setTab(3)">Insurance</a>
        	</li>
      	</ul>
   	</div>
@@ -33,21 +33,39 @@
        	<div ng-show="isSet(1)" ng-init="startButton()">
          	 <h1>Home page</h1>
           	<p>Patient Registration</p>
-         	 <!--<p><a class="btn btn-primary btn-lg" 			role="button">Learn more</a></p>-->
             <div><label>Name: </label><input type = "text" id="name" name="name" ng-model="name.info" /> </div>
             <div><label>Age: </label><input type = "text" id="age" name="age" ng-model="age.info" /></div>
-            <div><label>Sex: </label><input type = "text" id="sex" name="sex" ng-model="sex" /></div>
+			<div><label>Gender: </label><input type = "text" id="sex" name="sex" ng-model="gender.info" /></div>
+			<div><label>Additional information: </label><input type = "text" id="sex" name="sex" ng-model="information.info" /></div>
+			<div><label>Person responsible: </label><input type = "text" id="sex" name="sex" ng-model="responsible.info" /></div>
 
-            <div><label>Name:</label>{{name.info}}</div>
-            <div><label>age</label>{{age.info}}</div>
-        	</div>
-			<div ng-show="isSet(2)">
-          <h1>Profile page</h1>
-          <p>Profile information</p>
+			<div><label>Name:</label>{{name.info}}</div>
+			<div><label>age</label>{{age.info}}</div>
+			</div>
+			 
+
+		<div ng-show="isSet(2)">
+          <h1>Health history</h1>
+          <p>Health history information</p>
+		    <div><label>Name: </label><input type = "text" id="name" name="name" ng-model="name.info" /> </div>
+            <div><label>Age: </label><input type = "text" id="age" name="age" ng-model="age.info" /></div>
+			<div><label>Sex: </label><input type = "text" id="sex" name="sex" ng-model="sex" /></div>
+
+			<div><label>Name:</label>{{name.info}}</div>
+			<div><label>age</label>{{age.info}}</div>
+			</div>
      	</div>
         <div ng-show="isSet(3)">
-          <h1>Messages</h1>
-          <p> Some messages </p>
+          <h1>Insurance</h1>
+		  <p>Insurance information</p>
+		    <div><label>Name: </label><input type = "text" id="name" name="name" ng-model="name.info" /> </div>
+            <div><label>Age: </label><input type = "text" id="age" name="age" ng-model="age.info" /></div>
+			<div><label>Sex: </label><input type = "text" id="sex" name="sex" ng-model="sex" /></div>
+
+			<div><label>Name:</label>{{name.info}}</div>
+			<div><label>age</label>{{age.info}}</div>
+			</div>
+          
      	</div>
   	</div>
   </div>
