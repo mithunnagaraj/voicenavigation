@@ -16,5 +16,9 @@ h1, p, a {
 
 label{
     display:inline-block;
-    width:100px;
+    width:150px;
+}
+
+input {
+    width : 200px;
 }
