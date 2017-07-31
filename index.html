@@ -18,20 +18,20 @@
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked">
                 <li ng-class="{ active: isSet(1) }">
-                    <a href ng-click="setTab(1)" id="tab1">Home</a>
+                    <a href ng-click="setTab(1)" id="home">Home</a>
                 </li>
                 <li ng-class="{ active: isSet(2) }">
-                    <a href ng-click="setTab(2)" id="tab2">Health history</a>
+                    <a href ng-click="setTab(2)" id="history">Health history</a>
                 </li>
                 <li ng-class="{ active: isSet(3) }">
-                    <a href ng-click="setTab(3)" id="tab3">Insurance</a>
+                    <a href ng-click="setTab(3)" id="insurance">Insurance</a>
                 </li>
             </ul>
         </div>
         <div class="col-md-8">
             <div class="jumbotron">
             <div ng-show="isSet(1)" ng-init="startButton()">
-                <h1>Home page</h1>
+                <h1>Registration</h1>
 
                 <p>Patient Registration</p>
 
@@ -45,6 +45,28 @@
                 </div>
                 <div><label>Person responsible: </label><input type="text" id="responsible" name="responsible"
                                                                ng-model="responsible.info" next="name"/></div>
+															   
+				<br>
+				<button type="button" name="name" class="btn btn-success " ng-click ="save()" id="save" value="save"> Save</button>
+
+<div>
+    <table class="table">
+    <thead>
+    <tr>
+        <th>Patient Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  ng-repeat="data in datalist">
+        <td>{{data.name}}</td>
+        <td>{{data.age}}</td>
+       <td>{{data.gender}}</td>
+    </tr>
+    </tbody>
+</table></div>
+
             </div>
 
 

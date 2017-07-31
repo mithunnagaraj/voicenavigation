@@ -10,6 +10,8 @@ angular.module('tabApp', [])
         $scope.responsible = {info: ""};
         $scope.insurance = {info: ""};
         $scope.history = {info: ""};
+		
+		$scope.datalist=[];
 
         $scope.setTab = function (newTab) {
             $scope.tab = newTab;
@@ -88,7 +90,7 @@ angular.module('tabApp', [])
             var test = '';
             var flag = 0;
 
-            for (var i = event.resultIndex; i < event.results.length; ++i) {
+            for (var i = event.resultIndex; i < event.results.length; ++i) 
                 if (event.results[i].isFinal) {
                     test = "";
                     final_transcript = "";
@@ -100,10 +102,7 @@ angular.module('tabApp', [])
                     interim_transcript = event.results[i][0].transcript;
                     test = interim_transcript;
                 }
-                flag++;
 
-                break;
-            }
 
             final_transcript = capitalize(final_transcript);
             test = final_transcript;
@@ -120,7 +119,7 @@ angular.module('tabApp', [])
                 }
 
                 //recognition.start();
-            } else if(final_transcript.toUpperCase().includes("NEXT") && flag > 0){
+            }/*  else if(final_transcript.toUpperCase().includes("NEXT") && flag > 0){
 
                 console.log("TAB NUMBER : " + $scope.tab);
                 var tabNumber = "tab"+ ($scope.tab +1);
@@ -129,7 +128,15 @@ angular.module('tabApp', [])
                 }
                 $document[0].getElementById(tabNumber).click();
                 flag = 0;
-            } else {
+            } */ else if(final_transcript.toUpperCase().includes("CLICK")) {
+                var idValue = final_transcript.split("Click ")[1];
+                if(final_transcript.split(" Click")[0] != "") {
+                    final_transcript = final_transcript.split(" Click")[0];
+
+                }
+                $document[0].getElementById(idValue).click();
+            }
+			else {
                 var scopeElement = angular.element($document[0].activeElement).scope();
                 var attr = $document[0].activeElement.getAttribute("name");
 
@@ -145,6 +152,22 @@ angular.module('tabApp', [])
                 });
             }
         };
+		
+		
+		$scope.save = function() {
+  var attribs={};
+  attribs.name= $scope.name.info;
+    attribs.age= $scope.age.info;
+    attribs.gender= $scope.gender.info;
+
+    $scope.datalist.push(attribs);
+    $scope.name.info = "";
+    $scope.age.info = "";
+    $scope.gender.info = "";
+
+};
+
+
 
         var first_char = /\S/;
 
@@ -169,6 +192,7 @@ angular.module('tabApp', [])
             final_transcript = '';
             //recognition.lang = en;
             recognition.start();
+			$document[0].getElementById("name").focus();
             /*final_span.innerHTML = '';
              interim_span.innerHTML = '';
              start_timestamp = event.timeStamp;*/

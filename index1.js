@@ -104,34 +104,40 @@ angular.module('tabApp', [])
                         scopeElement[attr].info = final_transcript;
                     }
 
-                    $scope.$apply(function () {
-                        if (scopeElement) {
-                            scopeElement[attr].info = final_transcript;
-                        }
-                    });
-                } else {
-                    test = "";
-                    interim_transcript = "";
-                    interim_transcript = event.results[i][0].transcript;
-                    //test = interim_transcript;
-                }
+					$scope.$apply(function () {
+					if(scopeElement){
+						scopeElement[attr].info = final_transcript;
+					}
+				});
+				} else {
+						test = "";
+						interim_transcript = "";
+						interim_transcript = event.results[i][0].transcript;
+						//test = interim_transcript;
+				}
+			
+			if(final_transcript.includes("click on tab")) {
+				var idValue = final_transcript.split("tab ")[1];
+				if(final_transcript.split(" click")[0] != "") {
+					final_transcript = final_transcript.split(" click")[0];				
+				}
+				$document[0].getElementById(idValue).click();
+			}
+			
+			            final_transcript = capitalize(final_transcript);
+            test = final_transcript;
+            $scope.testinterim = final_transcript;
+
+            //final_transcript = capitalize(final_transcript);
+            /*final_span.innerHTML = linebreak(final_transcript);
+            interim_span.innerHTML = linebreak(interim_transcript);*/
+            //$scope.testinterim = final_transcript;
         }
 
-        /* 			if(final_transcript) {
-
-         } */
-        //final_transcript = capitalize(final_transcript);
-        /*final_span.innerHTML = linebreak(final_transcript);
-         interim_span.innerHTML = linebreak(interim_transcript);*/
-        //$scope.testinterim = final_transcript;
-    };
-
-var first_char = /\S/;
-function capitalize(s) {
-    return s.replace(first_char, function (m) {
-        return m.toUpperCase();
-    });
-}
+        var first_char = /\S/;
+        function capitalize(s) {
+            return s.replace(first_char, function(m) { return m.toUpperCase(); });
+        }
 
 var two_line = /\n\n/g;
 var one_line = /\n/g;
